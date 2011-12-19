@@ -1,0 +1,309 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		07CEBF5C149F7460004A947E /* RKFrameAdjustBlockManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CEBF5B149F7460004A947E /* RKFrameAdjustBlockManager.m */; };
+		07DB81DF149E719700D857A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DB81DE149E719700D857A9 /* UIKit.framework */; };
+		07DB81E1149E719700D857A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DB81E0149E719700D857A9 /* Foundation.framework */; };
+		07DB81E3149E719700D857A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DB81E2149E719700D857A9 /* CoreGraphics.framework */; };
+		07DB81E9149E719700D857A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07DB81E7149E719700D857A9 /* InfoPlist.strings */; };
+		07DB81EB149E719700D857A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DB81EA149E719700D857A9 /* main.m */; };
+		07DB81EF149E719700D857A9 /* RKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DB81EE149E719700D857A9 /* RKAppDelegate.m */; };
+		07DB81F2149E719700D857A9 /* RKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DB81F1149E719700D857A9 /* RKViewController.m */; };
+		07DB8206149E78CB00D857A9 /* RKLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DB8203149E78CB00D857A9 /* RKLayout.m */; };
+		07DB8207149E78CB00D857A9 /* UIView+RKLayoutUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DB8205149E78CB00D857A9 /* UIView+RKLayoutUtil.m */; };
+		07DB820A149F3DE200D857A9 /* RKSpacer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DB8209149F3DE200D857A9 /* RKSpacer.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		07CEBF5A149F7460004A947E /* RKFrameAdjustBlockManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKFrameAdjustBlockManager.h; sourceTree = "<group>"; };
+		07CEBF5B149F7460004A947E /* RKFrameAdjustBlockManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKFrameAdjustBlockManager.m; sourceTree = "<group>"; };
+		07CEBF5D149F7654004A947E /* RKSynthesizeSigleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKSynthesizeSigleton.h; sourceTree = "<group>"; };
+		07DB81DA149E719700D857A9 /* RKLayoutExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RKLayoutExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		07DB81DE149E719700D857A9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		07DB81E0149E719700D857A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		07DB81E2149E719700D857A9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		07DB81E6149E719700D857A9 /* RKLayoutExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RKLayoutExample-Info.plist"; sourceTree = "<group>"; };
+		07DB81E8149E719700D857A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		07DB81EA149E719700D857A9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		07DB81EC149E719700D857A9 /* RKLayoutExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RKLayoutExample-Prefix.pch"; sourceTree = "<group>"; };
+		07DB81ED149E719700D857A9 /* RKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RKAppDelegate.h; sourceTree = "<group>"; };
+		07DB81EE149E719700D857A9 /* RKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RKAppDelegate.m; sourceTree = "<group>"; };
+		07DB81F0149E719700D857A9 /* RKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RKViewController.h; sourceTree = "<group>"; };
+		07DB81F1149E719700D857A9 /* RKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RKViewController.m; sourceTree = "<group>"; };
+		07DB8202149E78CB00D857A9 /* RKLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKLayout.h; sourceTree = "<group>"; };
+		07DB8203149E78CB00D857A9 /* RKLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLayout.m; sourceTree = "<group>"; };
+		07DB8204149E78CB00D857A9 /* UIView+RKLayoutUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RKLayoutUtil.h"; sourceTree = "<group>"; };
+		07DB8205149E78CB00D857A9 /* UIView+RKLayoutUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RKLayoutUtil.m"; sourceTree = "<group>"; };
+		07DB8208149F3DE200D857A9 /* RKSpacer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKSpacer.h; sourceTree = "<group>"; };
+		07DB8209149F3DE200D857A9 /* RKSpacer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKSpacer.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		07DB81D7149E719700D857A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07DB81DF149E719700D857A9 /* UIKit.framework in Frameworks */,
+				07DB81E1149E719700D857A9 /* Foundation.framework in Frameworks */,
+				07DB81E3149E719700D857A9 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		07DB81CF149E719700D857A9 = {
+			isa = PBXGroup;
+			children = (
+				07DB8201149E78CB00D857A9 /* RKLayout */,
+				07DB81E4149E719700D857A9 /* RKLayoutExample */,
+				07DB81DD149E719700D857A9 /* Frameworks */,
+				07DB81DB149E719700D857A9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		07DB81DB149E719700D857A9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				07DB81DA149E719700D857A9 /* RKLayoutExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		07DB81DD149E719700D857A9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				07DB81DE149E719700D857A9 /* UIKit.framework */,
+				07DB81E0149E719700D857A9 /* Foundation.framework */,
+				07DB81E2149E719700D857A9 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		07DB81E4149E719700D857A9 /* RKLayoutExample */ = {
+			isa = PBXGroup;
+			children = (
+				07DB81ED149E719700D857A9 /* RKAppDelegate.h */,
+				07DB81EE149E719700D857A9 /* RKAppDelegate.m */,
+				07DB81F0149E719700D857A9 /* RKViewController.h */,
+				07DB81F1149E719700D857A9 /* RKViewController.m */,
+				07DB81E5149E719700D857A9 /* Supporting Files */,
+			);
+			path = RKLayoutExample;
+			sourceTree = "<group>";
+		};
+		07DB81E5149E719700D857A9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				07DB81E6149E719700D857A9 /* RKLayoutExample-Info.plist */,
+				07DB81E7149E719700D857A9 /* InfoPlist.strings */,
+				07DB81EA149E719700D857A9 /* main.m */,
+				07DB81EC149E719700D857A9 /* RKLayoutExample-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		07DB8201149E78CB00D857A9 /* RKLayout */ = {
+			isa = PBXGroup;
+			children = (
+				07DB8202149E78CB00D857A9 /* RKLayout.h */,
+				07DB8203149E78CB00D857A9 /* RKLayout.m */,
+				07DB8204149E78CB00D857A9 /* UIView+RKLayoutUtil.h */,
+				07DB8205149E78CB00D857A9 /* UIView+RKLayoutUtil.m */,
+				07DB8208149F3DE200D857A9 /* RKSpacer.h */,
+				07DB8209149F3DE200D857A9 /* RKSpacer.m */,
+				07CEBF5A149F7460004A947E /* RKFrameAdjustBlockManager.h */,
+				07CEBF5B149F7460004A947E /* RKFrameAdjustBlockManager.m */,
+				07CEBF5D149F7654004A947E /* RKSynthesizeSigleton.h */,
+			);
+			name = RKLayout;
+			path = ../RKLayout;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		07DB81D9149E719700D857A9 /* RKLayoutExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07DB81FB149E719700D857A9 /* Build configuration list for PBXNativeTarget "RKLayoutExample" */;
+			buildPhases = (
+				07DB81D6149E719700D857A9 /* Sources */,
+				07DB81D7149E719700D857A9 /* Frameworks */,
+				07DB81D8149E719700D857A9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RKLayoutExample;
+			productName = RKLayoutExample;
+			productReference = 07DB81DA149E719700D857A9 /* RKLayoutExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		07DB81D1149E719700D857A9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 07DB81D4149E719700D857A9 /* Build configuration list for PBXProject "RKLayoutExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 07DB81CF149E719700D857A9;
+			productRefGroup = 07DB81DB149E719700D857A9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				07DB81D9149E719700D857A9 /* RKLayoutExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		07DB81D8149E719700D857A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07DB81E9149E719700D857A9 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		07DB81D6149E719700D857A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07DB81EB149E719700D857A9 /* main.m in Sources */,
+				07DB81EF149E719700D857A9 /* RKAppDelegate.m in Sources */,
+				07DB81F2149E719700D857A9 /* RKViewController.m in Sources */,
+				07DB8206149E78CB00D857A9 /* RKLayout.m in Sources */,
+				07DB8207149E78CB00D857A9 /* UIView+RKLayoutUtil.m in Sources */,
+				07DB820A149F3DE200D857A9 /* RKSpacer.m in Sources */,
+				07CEBF5C149F7460004A947E /* RKFrameAdjustBlockManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		07DB81E7149E719700D857A9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				07DB81E8149E719700D857A9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		07DB81F9149E719700D857A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		07DB81FA149E719700D857A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		07DB81FC149E719700D857A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RKLayoutExample/RKLayoutExample-Prefix.pch";
+				INFOPLIST_FILE = "RKLayoutExample/RKLayoutExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		07DB81FD149E719700D857A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RKLayoutExample/RKLayoutExample-Prefix.pch";
+				INFOPLIST_FILE = "RKLayoutExample/RKLayoutExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		07DB81D4149E719700D857A9 /* Build configuration list for PBXProject "RKLayoutExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07DB81F9149E719700D857A9 /* Debug */,
+				07DB81FA149E719700D857A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		07DB81FB149E719700D857A9 /* Build configuration list for PBXNativeTarget "RKLayoutExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07DB81FC149E719700D857A9 /* Debug */,
+				07DB81FD149E719700D857A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 07DB81D1149E719700D857A9 /* Project object */;
+}
