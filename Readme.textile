@@ -1,0 +1,6 @@
+h1. RKLayout
+
+Simple layout manager for iOS. To use, just drag the _RKLayout_ directory to your XCode project. 
+
+See _RKLayoutExample_ project for usage.
+
