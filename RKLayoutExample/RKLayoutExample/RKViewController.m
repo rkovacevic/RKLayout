@@ -25,6 +25,8 @@
     
     NSArray *layoutModes = [NSArray arrayWithObjects: @"Horizontal", @"Vertical", @"Grid", nil];
     NSArray *spacingModes = [NSArray arrayWithObjects: @"Fixed spacing", @"Auto spacing", nil];
+    NSArray *horizontalAlignModes = [NSArray arrayWithObjects: @"Left", @"Center", @"Right", nil];
+    NSArray *verticalAlignModes = [NSArray arrayWithObjects: @"Top", @"Center", @"Bottom", nil];
     
     _mainLayout = [[RKLayout alloc] initWithFrame:self.view.bounds withMode:RKLayoutModeVertical];
     _mainLayout.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -32,12 +34,30 @@
     _mainLayout.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_mainLayout];
     
-    _controlsLayout = [[RKLayout alloc] initWithFrame:RKOriginRectMake(250.0f, 95.0f) withMode:RKLayoutModeVertical withSpacing:5.0f];
+    _controlsLayout = [[RKLayout alloc] initWithFrame:RKOriginRectMake(250.0f, 155.0f) withMode:RKLayoutModeVertical withSpacing:5.0f];
     [_mainLayout addSubview:_controlsLayout];
     
     UIFont *font = [UIFont boldSystemFontOfSize:12.0f];
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:font
                                                            forKey:UITextAttributeFont];
+
+    _horizontalAlignModeSegmentedControl = [[UISegmentedControl alloc] initWithItems:horizontalAlignModes];
+    [_horizontalAlignModeSegmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    _horizontalAlignModeSegmentedControl.frame = RKOriginRectMake(250, 25);
+    _horizontalAlignModeSegmentedControl.segmentedControlStyle = UISegmentedControlStylePlain;
+    _horizontalAlignModeSegmentedControl.selectedSegmentIndex = 1;
+    [_horizontalAlignModeSegmentedControl addTarget:self action:@selector(horizontalAlignModeSelected:) forControlEvents:UIControlEventValueChanged];
+    
+    [_controlsLayout addSubview:_horizontalAlignModeSegmentedControl];
+
+    _verticalAlignModeSegmentedControl = [[UISegmentedControl alloc] initWithItems:verticalAlignModes];
+    [_verticalAlignModeSegmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    _verticalAlignModeSegmentedControl.frame = RKOriginRectMake(250, 25);
+    _verticalAlignModeSegmentedControl.segmentedControlStyle = UISegmentedControlStylePlain;
+    _verticalAlignModeSegmentedControl.selectedSegmentIndex = 1;
+    [_verticalAlignModeSegmentedControl addTarget:self action:@selector(verticalAlignModeSelected:) forControlEvents:UIControlEventValueChanged];
+    
+    [_controlsLayout addSubview:_verticalAlignModeSegmentedControl];
     
     _layoutModeSegmentedControl = [[UISegmentedControl alloc] initWithItems:layoutModes];
     [_layoutModeSegmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
@@ -156,6 +176,54 @@
             break;
         default:
             _layoutDemoView.layoutMode = RKLayoutModeGrid;
+            break;
+    }
+    [_layoutDemoView layoutIfNeeded];
+    [UIView commitAnimations];
+}
+
+- (void)horizontalAlignModeSelected:(id)sender
+{
+    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    
+    switch (segmentedControl.selectedSegmentIndex)
+    {
+        case 0:
+            _layoutDemoView.horizontalAlign = RKLayoutHorizontalAlignLeft;
+            break;
+        case 1:
+            _layoutDemoView.horizontalAlign = RKLayoutHorizontalAlignCenter;
+            break;
+        default:
+            _layoutDemoView.horizontalAlign = RKLayoutHorizontalAlignRight;
+            break;
+    }
+    [_layoutDemoView layoutIfNeeded];
+    [UIView commitAnimations];
+}
+
+- (void)verticalAlignModeSelected:(id)sender
+{
+    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    
+    switch (segmentedControl.selectedSegmentIndex)
+    {
+        case 0:
+            _layoutDemoView.verticalAlign = RKLayoutVerticalAlignTop;
+            break;
+        case 1:
+            _layoutDemoView.verticalAlign = RKLayoutVerticalAlignCenter;
+            break;
+        default:
+            _layoutDemoView.verticalAlign = RKLayoutVerticalAlignBottom;
             break;
     }
     [_layoutDemoView layoutIfNeeded];

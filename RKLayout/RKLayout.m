@@ -23,6 +23,7 @@
 - (CGFloat)verticalAlignMargin;
 
 - (CGFloat)gridAutoSpacing;
+- (NSUInteger)gridNumberOfColumns;
 
 @end
 
@@ -87,6 +88,18 @@
     [self setNeedsLayout];
 }
 
+- (void)setHorizontalAlign:(RKLayoutHorizontalAlign)horizontalAlign
+{
+    _horizontalAlign = horizontalAlign;
+    [self setNeedsLayout];
+}
+
+- (void)setVerticalAlign:(RKLayoutVerticalAlign)verticalAlign
+{
+    _verticalAlign = verticalAlign;
+    [self setNeedsLayout];
+}
+
 - (CGSize)contentSize
 {
     switch (self.layoutMode) {
@@ -140,6 +153,10 @@
         {
             frameY = frameY + (maxSubviewHeight - subview.frameHeight) / 2;
         }
+        else if (self.verticalAlign == RKLayoutVerticalAlignBottom)
+        {
+            frameY = frameY + (maxSubviewHeight - subview.frameHeight);
+        }
         subview.frame = CGRectMake(frameX, frameY, subview.frameWidth, subview.frameHeight);
         currentX += spacing + subview.frameWidth;
     }
@@ -167,6 +184,10 @@
         {
             frameX = frameX + (maxSubviewWidth - subview.frameWidth) / 2;
         }
+        else if (self.horizontalAlign == RKLayoutHorizontalAlignRight)
+        {
+            frameX = frameX + (maxSubviewWidth - subview.frameWidth);
+        }
         subview.frame = CGRectMake(frameX, frameY, subview.frameWidth, subview.frameHeight);
         currentY += spacing + subview.frameHeight;
     }
@@ -186,25 +207,31 @@
         spacing = self.gridAutoSpacing;
     }
     
-    NSInteger currentColumn = 0;
-    NSInteger currentRow = 0;
-    CGFloat currentColumnWidth = horizontalAlignMargin + spacing;
-    CGFloat curreRKeight = verticalAlignMargin + spacing;
+    NSUInteger numberOfColumns = [self gridNumberOfColumns];
+    NSUInteger numberOfRows = lroundf(ceilf([[NSNumber numberWithInt:self.subviews.count] floatValue] / [[NSNumber numberWithInt:numberOfColumns] floatValue]));
     
-    for (UIView* subview in self.subviews)
+    NSUInteger currentCell = 0;
+    
+    for (NSInteger row = 0; row < numberOfRows; row++)
     {
-        if (currentColumn > 0 && (currentColumnWidth + maxSubviewWidth + spacing) > self.frameWidth) 
+        for (NSInteger column = 0; column < numberOfColumns; column++)
         {
-            // Next row
-            currentRow++;
-            currentColumn = 0;
-            currentColumnWidth = horizontalAlignMargin + spacing;
-            curreRKeight += spacing + maxSubviewHeight;
+            UIView* subview = [self.subviews objectAtIndex:currentCell];
+            
+            CGFloat cellFrameX = horizontalAlignMargin + (column + 1) * spacing + column * maxSubviewWidth;
+            CGFloat cellFrameY = verticalAlignMargin + (row + 1) * spacing + row * maxSubviewHeight;
+            
+            CGRect cellFrame = CGRectMake(cellFrameX, cellFrameY, maxSubviewWidth, maxSubviewHeight);
+            
+            [RKLayout placeView:subview 
+                        inFrame:cellFrame 
+            withHorizontalAlign:self.horizontalAlign 
+              withVerticalAlign:self.verticalAlign];
+            
+            currentCell++;
+            
+            if (currentCell >= self.subviews.count) return;
         }
-        CGRect cellRect = CGRectMake(currentColumnWidth, curreRKeight, maxSubviewWidth, maxSubviewHeight);
-        [RKLayout centerView:subview inFrame:cellRect];
-        currentColumnWidth += maxSubviewWidth + spacing;
-        currentColumn++;
     }
 }
 
@@ -302,13 +329,12 @@
     CGFloat maxSubviewWidth = self.maxSubviewWidth;
     CGFloat maxSubviewHeight = self.maxSubviewHeight;
     
-    NSInteger numberOfColumns = 0;
     NSInteger numberOfRows = 1;
     NSInteger currentColumn = 0;
     NSInteger currentRow = 0;
     CGFloat currentColumnWidth = spacing;
     CGFloat contentWidth = 0.0f;
-    CGFloat conteRKeight = spacing + maxSubviewHeight;
+    CGFloat contentHeight = spacing + maxSubviewHeight;
     for (UIView* subview in self.subviews)
     {
         if (currentColumn > 0 && (currentColumnWidth + maxSubviewWidth + spacing) > self.frameWidth) 
@@ -318,15 +344,14 @@
             numberOfRows++;
             currentColumn = 0;
             currentColumnWidth = spacing;
-            conteRKeight += spacing + maxSubviewHeight;
+            contentHeight += spacing + maxSubviewHeight;
         }
         currentColumnWidth += maxSubviewWidth + spacing;
         currentColumn++;
         contentWidth = MAX(contentWidth, currentColumnWidth);
-        numberOfColumns = MAX(numberOfColumns, currentColumn + 1);
     }
     
-    return CGSizeMake(contentWidth, conteRKeight);
+    return CGSizeMake(contentWidth, contentHeight);
 }
 
 - (CGFloat)gridAutoSpacing
@@ -334,6 +359,37 @@
     NSUInteger numberOfColumnsOrRows = lroundf(sqrtf(self.subviews.count));
     CGFloat largerDimension = MAX(self.maxSubviewWidth, self.maxSubviewHeight);
     return (self.frameHeight - (numberOfColumnsOrRows * largerDimension)) / (self.subviews.count + 1);
+}
+
+- (NSUInteger)gridNumberOfColumns
+{
+    CGFloat spacing = self.spacing;
+    if (self.spacingMode == RKLayoutSpacingModeAuto)
+    {
+        spacing = self.gridAutoSpacing;
+    }
+    
+    CGFloat maxSubviewWidth = self.maxSubviewWidth;
+    
+    NSInteger numberOfColumns = 0;
+    NSInteger currentColumn = 0;
+    NSInteger currentRow = 0;
+    CGFloat currentColumnWidth = spacing;
+    for (UIView* subview in self.subviews)
+    {
+        if (currentColumn > 0 && (currentColumnWidth + maxSubviewWidth + spacing) > self.frameWidth) 
+        {
+            // Next row
+            currentRow++;
+            currentColumn = 0;
+            currentColumnWidth = spacing;
+        }
+        currentColumnWidth += maxSubviewWidth + spacing;
+        currentColumn++;
+        numberOfColumns = MAX(numberOfColumns, currentColumn);
+    }
+    
+    return numberOfColumns;
 }
 
 @end
@@ -406,10 +462,39 @@
 
 + (void)centerView:(UIView*)view inFrame:(CGRect)frame
 {
+    [RKLayout placeView:view
+            inFrame:frame 
+withHorizontalAlign:RKLayoutHorizontalAlignCenter 
+  withVerticalAlign:RKLayoutVerticalAlignCenter];
+}
+
++ (void)placeView:(UIView*)view inFrame:(CGRect)frame withHorizontalAlign:(RKLayoutHorizontalAlign)horizontalAlign withVerticalAlign:(RKLayoutVerticalAlign)verticalAlign
+{
     [view beginFrameAdjust];
-    view.frameX = frame.origin.x + (frame.size.width - view.frameWidth) / 2;
-    view.frameY = frame.origin.y + (frame.size.height - view.frameHeight) / 2;
-    [view commitFrameAdjust];
+    switch (horizontalAlign) {
+        case RKLayoutHorizontalAlignLeft:
+            view.frameX = frame.origin.x;
+            break;
+        case RKLayoutHorizontalAlignCenter:
+            view.frameX = frame.origin.x + (frame.size.width - view.frameWidth) / 2;
+            break;
+        default:
+            view.frameX = frame.origin.x + (frame.size.width - view.frameWidth);
+            break;
+    }
+    
+    switch (verticalAlign) {
+        case RKLayoutVerticalAlignTop:
+            view.frameY = frame.origin.y;
+            break;
+        case RKLayoutVerticalAlignCenter:
+            view.frameY = frame.origin.y + (frame.size.height - view.frameHeight) / 2;
+            break;
+        default:
+            view.frameY = frame.origin.y + (frame.size.height - view.frameHeight);
+            break;
+    }
+    [view commitFrameAdjust];    
 }
 
 @end

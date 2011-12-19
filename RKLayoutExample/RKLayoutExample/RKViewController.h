@@ -13,6 +13,8 @@
 @interface RKViewController : UIViewController {
     RKLayout* _controlsLayout;
     RKLayout* _mainLayout;
+    UISegmentedControl* _horizontalAlignModeSegmentedControl;
+    UISegmentedControl* _verticalAlignModeSegmentedControl;
     UISegmentedControl* _spacingModeSegmentedControl;
     UISegmentedControl* _layoutModeSegmentedControl;
     UIButton* _addSubviewButton;

@@ -8,6 +8,13 @@
 #import "UIView+RKLayoutUtil.h"
 #import "RKFrameAdjustBlockManager.h"
 
+@interface UIView ()
+
+- (CGFloat)roundToPixel:(CGFloat)value;
+- (BOOL)retinaDisplay;
+
+@end
+
 @implementation UIView (RKLayoutUtil)
 
 - (void)beginFrameAdjust
@@ -29,7 +36,7 @@
 
 - (void)setFrameWidth:(CGFloat)width
 {
-    width = roundf(width);
+    width = [self roundToPixel:width];
     if ([RKFrameAdjustBlockManager sharedRKFrameAdjustBlockManager].insideFrameAdjustBlock)
     {
         CGRect frame = [RKFrameAdjustBlockManager sharedRKFrameAdjustBlockManager].frame;
@@ -49,7 +56,7 @@
 
 - (void)setFrameHeight:(CGFloat)height
 {
-    height = roundf(height);
+    height = [self roundToPixel:height];
     if ([RKFrameAdjustBlockManager sharedRKFrameAdjustBlockManager].insideFrameAdjustBlock)
     {
         CGRect frame = [RKFrameAdjustBlockManager sharedRKFrameAdjustBlockManager].frame;
@@ -69,7 +76,7 @@
 
 - (void)setFrameX:(CGFloat)x
 {
-    x = roundf(x);
+    x = [self roundToPixel:x];
     if ([RKFrameAdjustBlockManager sharedRKFrameAdjustBlockManager].insideFrameAdjustBlock)
     {
         CGRect frame = [RKFrameAdjustBlockManager sharedRKFrameAdjustBlockManager].frame;
@@ -89,7 +96,7 @@
 
 - (void)setFrameY:(CGFloat)y
 {
-    y = roundf(y);
+    y = [self roundToPixel:y];
     if ([RKFrameAdjustBlockManager sharedRKFrameAdjustBlockManager].insideFrameAdjustBlock)
     {
         CGRect frame = [RKFrameAdjustBlockManager sharedRKFrameAdjustBlockManager].frame;
@@ -140,6 +147,25 @@
         maxSubviewHeight = MAX(maxSubviewHeight, subview.frameHeight);
     }
     return maxSubviewHeight;
+}
+
+#pragma mark - Private
+
+- (CGFloat)roundToPixel:(CGFloat)value
+{
+    if ([self retinaDisplay])
+    {
+        return roundf(value * 2) / 2;
+    }
+    else
+    {
+        return roundf(value);
+    }
+}
+
+- (BOOL)retinaDisplay
+{
+    return ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [[UIScreen mainScreen] scale] == 2);
 }
 
 @end

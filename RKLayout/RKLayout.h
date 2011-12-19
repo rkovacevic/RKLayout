@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define RKLayoutVersion 1.0
+#define RKLayoutVersion 1.1
 
 typedef enum {
     RKLayoutModeHorizontal,
@@ -63,6 +63,8 @@ typedef enum {
 + (void)positionView:(UIView*)view bellowView:(UIView*)baseView withSpacing:(CGFloat)spacing;
 
 + (void)centerView:(UIView*)view inFrame:(CGRect)frame;
+
++ (void)placeView:(UIView*)view inFrame:(CGRect)frame withHorizontalAlign:(RKLayoutHorizontalAlign)horizontalAlign withVerticalAlign:(RKLayoutVerticalAlign)verticalAlign;
 
 @end
 
