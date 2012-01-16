@@ -34,16 +34,11 @@
     _mainLayout.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_mainLayout];
     
-    _controlsLayout = [[RKLayout alloc] initWithFrame:RKOriginRectMake(250.0f, 155.0f) withMode:RKLayoutModeVertical withSpacing:5.0f];
+    _controlsLayout = [[RKLayout alloc] initWithFrame:RKOriginRectMake(300.0f, 155.0f) withMode:RKLayoutModeVertical withSpacing:5.0f];
     [_mainLayout addSubview:_controlsLayout];
-    
-    UIFont *font = [UIFont boldSystemFontOfSize:12.0f];
-    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font
-                                                           forKey:UITextAttributeFont];
 
     _horizontalAlignModeSegmentedControl = [[UISegmentedControl alloc] initWithItems:horizontalAlignModes];
-    [_horizontalAlignModeSegmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
-    _horizontalAlignModeSegmentedControl.frame = RKOriginRectMake(250, 25);
+    _horizontalAlignModeSegmentedControl.frame = RKOriginRectMake(300, 25);
     _horizontalAlignModeSegmentedControl.segmentedControlStyle = UISegmentedControlStylePlain;
     _horizontalAlignModeSegmentedControl.selectedSegmentIndex = 1;
     [_horizontalAlignModeSegmentedControl addTarget:self action:@selector(horizontalAlignModeSelected:) forControlEvents:UIControlEventValueChanged];
@@ -51,8 +46,7 @@
     [_controlsLayout addSubview:_horizontalAlignModeSegmentedControl];
 
     _verticalAlignModeSegmentedControl = [[UISegmentedControl alloc] initWithItems:verticalAlignModes];
-    [_verticalAlignModeSegmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
-    _verticalAlignModeSegmentedControl.frame = RKOriginRectMake(250, 25);
+    _verticalAlignModeSegmentedControl.frame = RKOriginRectMake(300, 25);
     _verticalAlignModeSegmentedControl.segmentedControlStyle = UISegmentedControlStylePlain;
     _verticalAlignModeSegmentedControl.selectedSegmentIndex = 1;
     [_verticalAlignModeSegmentedControl addTarget:self action:@selector(verticalAlignModeSelected:) forControlEvents:UIControlEventValueChanged];
@@ -60,8 +54,7 @@
     [_controlsLayout addSubview:_verticalAlignModeSegmentedControl];
     
     _layoutModeSegmentedControl = [[UISegmentedControl alloc] initWithItems:layoutModes];
-    [_layoutModeSegmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
-    _layoutModeSegmentedControl.frame = RKOriginRectMake(250, 25);
+    _layoutModeSegmentedControl.frame = RKOriginRectMake(300, 25);
     _layoutModeSegmentedControl.segmentedControlStyle = UISegmentedControlStylePlain;
     _layoutModeSegmentedControl.selectedSegmentIndex = 0;
     [_layoutModeSegmentedControl addTarget:self action:@selector(layoutModeSelected:) forControlEvents:UIControlEventValueChanged];
@@ -69,28 +62,25 @@
     [_controlsLayout addSubview:_layoutModeSegmentedControl];
     
     UISegmentedControl* spacingSegmentedControl = [[UISegmentedControl alloc] initWithItems:spacingModes];
-    [spacingSegmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
-    spacingSegmentedControl.frame = RKOriginRectMake(250, 25);
+    spacingSegmentedControl.frame = RKOriginRectMake(300, 25);
     spacingSegmentedControl.segmentedControlStyle = UISegmentedControlStylePlain;
     spacingSegmentedControl.selectedSegmentIndex = 0;
     [spacingSegmentedControl addTarget:self action:@selector(spacingModeSelected:) forControlEvents:UIControlEventValueChanged];
     
     [_controlsLayout addSubview:spacingSegmentedControl];
 	
-    RKLayout* buttonsLayout = [[RKLayout alloc] initWithFrame:RKOriginRectMake(250, 25) withMode:RKLayoutModeHorizontal withSpacing:5.0f];
+    RKLayout* buttonsLayout = [[RKLayout alloc] initWithFrame:RKOriginRectMake(300, 25) withMode:RKLayoutModeHorizontal withSpacing:5.0f];
     buttonsLayout.horizontalAlign = RKLayoutHorizontalAlignCenter;
     [_controlsLayout addSubview:buttonsLayout];
     
     _addSubviewButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     _addSubviewButton.frame = RKOriginRectMake(120, 25);
-    _addSubviewButton.titleLabel.font = font;
     [_addSubviewButton setTitle:@"Add subview" forState:UIControlStateNormal];
     [_addSubviewButton addTarget:self action:@selector(addSubviewButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     [buttonsLayout addSubview:_addSubviewButton];
     
     _removeSubviewButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    _removeSubviewButton.frame = RKOriginRectMake(120, 25);
-    _removeSubviewButton.titleLabel.font = font;
+    _removeSubviewButton.frame = RKOriginRectMake(140, 25);
     [_removeSubviewButton setTitle:@"Remove subview" forState:UIControlStateNormal];
     [_removeSubviewButton addTarget:self action:@selector(removeSubviewButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     [buttonsLayout addSubview:_removeSubviewButton];
