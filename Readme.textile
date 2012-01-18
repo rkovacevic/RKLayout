@@ -1,6 +1,20 @@
 h1. RKLayout
 
-Simple layout manager for iOS. To use, just drag the _RKLayout_ directory to your XCode project. 
+Simple layout manager for iOS. 
+
+h2. How to add to your project
+
+To use, just drag the _RKLayout_ directory to your XCode project. 
+
+h2. Features
+
+* Stack views horizontally, vertically or in a grid
+* Set constant spacing between views, or stretch the spacing, so that the whole container view is filled
+* Align views relative to container (top, bottom, center, left, right, and all combinations)
+* Animations are supported for all properties
+
+h2. Usage
 
 See _RKLayoutExample_ project for usage.
 
+*Basic idea:* You create an istance of _RKLayout_, set _mode_ (horizontal, vertical or grid), and add subviews to it. Subview positions will then automatically be adjusted according to the selected _mode_. Note that subview size will never be changed by the layout manager.
